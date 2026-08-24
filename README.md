@@ -11,24 +11,20 @@ This project predicts the amount of tip a waiter is likely to receive based on d
    ```
 2. Install the required libraries:
    ```bash
-   pip install pandas numpy plotly scikit-learn matplotlib
+   pip install pandas numpy matplotlib scikit-learn
    ```
 3. Make sure `tips.csv` is in the same folder as the notebook/script.
 
 ## How to Run and Test
 - Open `waiter_tips_prediction.ipynb` in Jupyter Notebook or Google Colab and run all cells top to bottom (Runtime → Run all).
-- Alternatively, run the script version directly:
-  ```bash
-  python waiter_tips_prediction.py
-  ```
-- The notebook/script prints the R² score on the test set and a sample prediction at the end, so you can confirm it runs correctly.
+- The notebook prints the R² score on the test set and a sample prediction at the end, so you can confirm it runs correctly.
+- All charts render directly inside the notebook — no separate files to check.
 
 ## Libraries and Functions Used
 - **pandas** — loading and manipulating the `tips.csv` dataset (`read_csv`, `map`, `groupby`)
 - **numpy** — numeric array handling for the prediction example
-- **plotly.express** — interactive visualization (`scatter`, `pie`) to explore relationships between features
+- **matplotlib** — visualization (`scatter`, `pie`) to explore relationships between features, chosen because its charts render as static images that display correctly on GitHub (unlike interactive Plotly output)
 - **scikit-learn** — `train_test_split` to split data into training/test sets, `LinearRegression` to train the model, and `model.score()` / `model.predict()` to evaluate and predict
-- **matplotlib** — used to generate the static chart images embedded below, since GitHub cannot render interactive Plotly output
 
 ## Dataset
 - Source: `tips.csv` (244 records, no missing values)
@@ -42,25 +38,9 @@ This project predicts the amount of tip a waiter is likely to receive based on d
 - Target: `tip` — tip given in dollars
 
 ## Exploratory Data Analysis
-Using `plotly.express`, scatter plots of `tip` vs `total_bill` (colored by day, gender, and time) show a clear positive linear relationship: larger bills lead to larger tips, roughly in the 15–20% range. Pie charts of tip share by day, gender, and smoking status show Saturday accounts for the largest share of total tips, and tipping behavior is broadly similar across gender and smoking status, with total_bill and party size standing out as the strongest visual predictors.
+Using `matplotlib`, scatter plots of `tip` vs `total_bill` (colored by day, gender, and time) show a clear positive linear relationship: larger bills lead to larger tips, roughly in the 15–20% range. Pie charts of tip share by day, gender, and smoking status show Saturday accounts for the largest share of total tips, and tipping behavior is broadly similar across gender and smoking status, with total_bill and party size standing out as the strongest visual predictors.
 
-**Tips vs Total Bill, by day:**
-![Tips vs Total Bill by day](images/fig1_bill_vs_tip_day.png)
-
-**Tips vs Total Bill, by gender:**
-![Tips vs Total Bill by gender](images/fig2_bill_vs_tip_sex.png)
-
-**Tips vs Total Bill, by time (Lunch vs Dinner):**
-![Tips vs Total Bill by time](images/fig3_bill_vs_tip_time.png)
-
-**Share of total tips by day of the week:**
-![Share of tips by day](images/fig4_pie_day.png)
-
-**Share of total tips by gender:**
-![Share of tips by gender](images/fig5_pie_sex.png)
-
-**Share of total tips by smoking status:**
-![Share of tips by smoker status](images/fig6_pie_smoker.png)
+All charts are generated and shown directly inside `waiter_tips_prediction.ipynb` — open the notebook to see them (no separate image files needed).
 
 ## Model Choice
 **Linear Regression** was chosen because:
